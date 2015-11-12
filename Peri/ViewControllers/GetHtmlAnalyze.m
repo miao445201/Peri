@@ -16,19 +16,26 @@
     NSString *regular = [NSString stringWithFormat:@"(?<=img src=\").*?jpg"];
     NSMutableArray *dict = [GetHtmlAnalyze substringByhtmlStr:htmlString regular:regular];
     NSLog(@"%@",dict);
-//    NSEnumerator *enumerator = [dict objectEnumerator];
-//    id object;
-//    NSMutableArray *array = [[NSMutableArray alloc]initWithCapacity:100];
-//    
-//    while ((object = [enumerator nextObject]) != nil){
-//        if([object rangeOfString:@"img"].location == NSNotFound) {
-//            [array addObject:object];
-//        }
-//    }
-//    return array;
     return dict;
 }
 
++ (NSMutableArray *)searchDetailImageWithHtml:(NSString *)html {
+    NSString *htmlString = [GetHtmlAnalyze urlstring:html];
+    NSLog(@"%@",htmlString);
+    NSString *regular = [NSString stringWithFormat:@"(?<=src=\").*?jpg"];
+    NSMutableArray *dict = [GetHtmlAnalyze substringByhtmlStr:htmlString regular:regular];
+    NSLog(@"%@",dict);
+    NSEnumerator *enumerator = [dict objectEnumerator];
+    id object;
+    NSMutableArray *array = [[NSMutableArray alloc]initWithCapacity:100];
+    
+    while ((object = [enumerator nextObject]) != nil){
+        if([object rangeOfString:@"im"].location == NSNotFound) {
+                [array addObject:object];
+        }
+    }
+    return array;
+}
 + (NSMutableArray *) searchImageDetailUrlWithHtml:(NSString *)html {
     NSString *htmlString = [GetHtmlAnalyze urlstring:html];
     NSLog(@"%@",htmlString);
@@ -48,7 +55,12 @@
             }
         }
     }
-    return array;
+    NSMutableArray *imageArray = [[NSMutableArray alloc]init];
+    for (unsigned i = 0 ; i< [array count]; i ++) {
+        if ( [imageArray containsObject:array[i]]==NO) {
+            [imageArray addObject:array[i]];
+        }
+    }    return imageArray;
 }
 
 + (NSString*) urlstring:(NSString*)strurl {

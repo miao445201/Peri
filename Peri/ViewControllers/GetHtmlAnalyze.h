@@ -12,6 +12,8 @@
 
 + (NSMutableArray *) searchImageWithHtml:(NSString *)html;
 
++ (NSMutableArray *)searchDetailImageWithHtml:(NSString *)html;
+
 + (NSMutableArray *) searchImageDetailUrlWithHtml:(NSString *)html;
 
 + (NSString *) urlstring:(NSString*)strurl;
