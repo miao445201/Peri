@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-@interface RootViewController : BaseViewController
+@interface RootViewController : BaseViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @end
