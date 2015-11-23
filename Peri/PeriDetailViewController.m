@@ -9,11 +9,13 @@
 #import "PeriDetailViewController.h"
 #import "GetHtmlAnalyze.h"
 #import "UIImageView+WebCache.h"
+#import "ProgressHUD.h"
 
 @interface PeriDetailViewController ()
 
 @property (strong, nonatomic)NSMutableArray *imageArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *imageCollectionView;
+@property (nonatomic, strong) UISwipeGestureRecognizer *rightSwipeGestureRecognizer;
 
 @end
 
@@ -22,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self GetFromHtml];
+    [self addGestureRecognizer];
     self.imageCollectionView.dataSource = self;
     self.imageCollectionView.delegate = self;
     [self.imageCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"CollectionViewCell"];
@@ -30,7 +33,20 @@
 - (void)GetFromHtml {
     self.imageArray = [GetHtmlAnalyze searchDetailImageWithHtml:self.detailImageUrl];
     NSLog(@"%@=======%lu",self.imageArray,(unsigned long)self.imageArray.count);
+    [ProgressHUD dismiss];
+}
+
+- (void)addGestureRecognizer {
+    self.rightSwipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftItemTapped)];
     
+    self.rightSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [self.view addGestureRecognizer:self.rightSwipeGestureRecognizer];
+}
+
+- (void)leftItemTapped
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,7 +95,11 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
     
+    if([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=Wallpaper"]];
+    }
 }
 
 //返回这个UICollectionView是否可以被选择

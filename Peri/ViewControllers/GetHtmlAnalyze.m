@@ -19,6 +19,16 @@
     return dict;
 }
 
++ (NSMutableArray *) searchTitleWithHtml:(NSString *)html {
+    NSString *htmlString = [GetHtmlAnalyze urlstring:html];
+    NSLog(@"%@",htmlString);
+    NSString *regular = [NSString stringWithFormat:@"((?=alt=\")[^<]*></a>) | (alt=\"<b>[^<]*</b>)"];
+    NSString *regular2 = [NSString stringWithFormat:@"alt=\"[^<b>][^<]*[^</b>]"];
+    NSMutableArray *dict = [GetHtmlAnalyze substringByhtmlStr:htmlString regular:regular2];
+    NSLog(@"%@",dict);
+    return dict;
+}
+
 + (NSMutableArray *)searchDetailImageWithHtml:(NSString *)html {
     NSString *htmlString = [GetHtmlAnalyze urlstring:html];
     NSLog(@"%@",htmlString);

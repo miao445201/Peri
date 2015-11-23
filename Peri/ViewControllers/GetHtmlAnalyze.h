@@ -10,6 +10,8 @@
 
 @interface GetHtmlAnalyze : NSObject
 
++ (NSMutableArray *) searchTitleWithHtml:(NSString *)html;
+
 + (NSMutableArray *) searchImageWithHtml:(NSString *)html;
 
 + (NSMutableArray *)searchDetailImageWithHtml:(NSString *)html;
