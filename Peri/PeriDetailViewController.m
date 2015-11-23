@@ -16,7 +16,7 @@
 @property (strong, nonatomic)NSMutableArray *imageArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *imageCollectionView;
 @property (nonatomic, strong) UISwipeGestureRecognizer *rightSwipeGestureRecognizer;
-
+@property (nonatomic, strong) UIImage *selectImage;
 @end
 
 @implementation PeriDetailViewController
@@ -95,11 +95,12 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-    
-    if([[UIApplication sharedApplication] canOpenURL:url]) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=Wallpaper"]];
-    }
+    UICollectionViewCell *selectCell = [self.imageCollectionView cellForItemAtIndexPath:indexPath];
+    UIImageView *selectImageView = (UIImageView*)selectCell.backgroundView;
+    self.selectImage = selectImageView.image;
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"心动了没？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"点击下载" otherButtonTitles:nil, nil];
+    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+    [actionSheet showInView:self.view];
 }
 
 //返回这个UICollectionView是否可以被选择
@@ -108,5 +109,27 @@
     return YES;
 }
 
+- (void)imageSavedToPhotosAlbum:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    NSString *message = @"";
+    if (!error) {
+        message = @"成功保存到相册";
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"下载提示" message:message delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+    }else
+    {
+        message = [error description];
+    }
+    NSLog(@"message is %@",message);
+}
+#pragma UIActionSheet delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        UIImageWriteToSavedPhotosAlbum(self.selectImage, self, @selector(imageSavedToPhotosAlbum:didFinishSavingWithError:contextInfo:), nil);
+    }else if (buttonIndex == 1) {
+        NSLog(@"------------");
+    }
+}
 
 @end

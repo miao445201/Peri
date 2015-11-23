@@ -99,6 +99,7 @@
     if (self.pageCount > 1) {
         self.pageCount--;
         [self GetFromHtml];
+        [self moveLeftViewAnimation];
     }
     else {
         UIAlertView *alertview = [[UIAlertView alloc]initWithTitle:@"手滑了吗？" message:@"已经是第一页了哟" delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
@@ -107,10 +108,25 @@
     
 }
 - (void)rightItemTapped {
-    [ProgressHUD show:@"Please wait..."];
+    [self moveRightViewAnimation];
     self.pageCount++;
     [self GetFromHtml];
-    [ProgressHUD dismiss];
+}
+
+- (void)moveLeftViewAnimation {
+    [UIView beginAnimations:@"animation" context:nil];
+    [UIView setAnimationDelay:1.0f];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.view cache:YES];
+    [UIView commitAnimations];
+}
+
+- (void)moveRightViewAnimation {
+    [UIView beginAnimations:@"animation" context:nil];
+    [UIView setAnimationDelay:1.0f];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.view cache:YES];
+    [UIView commitAnimations];
 }
 //定义展示的UICollectionViewCell的个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
