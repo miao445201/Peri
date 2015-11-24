@@ -23,4 +23,5 @@
 + (NSMutableArray *)substringByhtmlStr:(NSString*)htmlStr regular:(NSString *)regular;
 
 + (id)jsonReturn:(NSString *)responseString;
+
 @end

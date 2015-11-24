@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import "UserInfoViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -18,9 +20,24 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];//设置窗口
     RootViewController *mvc = [[RootViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mvc];
+    UINavigationController *rootNav = [[UINavigationController alloc] initWithRootViewController:mvc];
+    rootNav.tabBarItem.title = @"图区";
+    rootNav.tabBarItem.image = [UIImage imageNamed:@"tuNoSelect.png"];
+    //rootNav.tabBarItem.selectedImage = [UIImage imageNamed:@"tuSelect.png"];
+    
+    UserInfoViewController *user = [[UserInfoViewController alloc]init];
+    UINavigationController *userNav = [[UINavigationController alloc]initWithRootViewController:user];
+    userNav.tabBarItem.title = @"个人中心";
+    userNav.tabBarItem.image = [UIImage imageNamed:@"user.png"];
+
+    
+    UITabBarController *rootTab = [[UITabBarController alloc]init];
+    rootTab.tabBar.selectedImageTintColor = [UIColor orangeColor];
+    NSArray *vc = @[rootNav,userNav];
+    rootTab.viewControllers = vc;
+    
 //    nav.navigationBarHidden = YES;//是否隐藏导航栏
-    self.window.rootViewController = nav;//进入的首个页面
+    self.window.rootViewController = rootTab;//进入的首个页面
     [self.window makeKeyAndVisible];//显示
     return YES;
 }

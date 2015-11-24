@@ -181,10 +181,4 @@
     return YES;
 }
 
--(void) collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if([indexPath row] == ((NSIndexPath*)[[collectionView indexPathsForVisibleItems] lastObject]).row){
-        [ProgressHUD dismiss];
-    }
-}
 @end

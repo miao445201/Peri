@@ -29,4 +29,10 @@
     self.navigationItem.leftBarButtonItem = nil;
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    CATransition *transition = [CATransition animation];
+    [transition setDuration:1];
+    [transition setType:@"cube"];
+    [self.view.layer addAnimation:transition forKey:nil];
+}
 @end
