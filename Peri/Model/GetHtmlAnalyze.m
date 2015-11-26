@@ -7,9 +7,25 @@
 //
 
 #import "GetHtmlAnalyze.h"
-
+#import "imageModel.h"
+#import "PeriDBModel.h"
 @implementation GetHtmlAnalyze
 
++ (void)GetFromHtml:(int)pageCount {
+    NSString *htmlUrl = [NSString stringWithFormat:@"http://www.meizitu.com/a/list_1_%d.html",pageCount];
+    NSMutableArray *imageArray = [GetHtmlAnalyze searchImageWithHtml:htmlUrl];
+    NSMutableArray *imageDetailUrlArray = [GetHtmlAnalyze searchImageDetailUrlWithHtml:htmlUrl];
+    NSMutableArray *dataArray = [[NSMutableArray alloc]initWithCapacity:100];
+    for (int i = 0; i < 30; i++) {
+        imageModel *model = [[imageModel alloc]init];
+        model.imageUrl = [imageArray objectAtIndex:i];
+        model.imageDetail = [imageDetailUrlArray objectAtIndex:i];
+        [dataArray addObject:model];
+    }
+    [[PeriDBModel GetInstance]initDB];
+    [[PeriDBModel GetInstance]insertWithDataArray:dataArray];
+    [[PeriDBModel GetInstance]closeDB];
+}
 + (NSMutableArray *) searchImageWithHtml:(NSString *)html {
     NSString *htmlString = [GetHtmlAnalyze urlstring:html];
     NSLog(@"%@",htmlString);
@@ -22,7 +38,7 @@
 + (NSMutableArray *) searchTitleWithHtml:(NSString *)html {
     NSString *htmlString = [GetHtmlAnalyze urlstring:html];
     NSLog(@"%@",htmlString);
-    NSString *regular = [NSString stringWithFormat:@"((?=alt=\")[^<]*></a>) | (alt=\"<b>[^<]*</b>)"];
+    //NSString *regular = [NSString stringWithFormat:@"((?=alt=\")[^<]*></a>) | (alt=\"<b>[^<]*</b>)"];
     NSString *regular2 = [NSString stringWithFormat:@"alt=\"[^<b>][^<]*[^</b>]"];
     NSMutableArray *dict = [GetHtmlAnalyze substringByhtmlStr:htmlString regular:regular2];
     NSLog(@"%@",dict);

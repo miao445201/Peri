@@ -12,10 +12,13 @@
 #import "PeriDetailViewController.h"
 #import "ProgressHUD.h"
 #import "MJRefresh.h"
+#import "PeriDBModel.h"
+#import "imageModel.h"
 
 @interface RootViewController ()
 @property int pageCount;
 @property (strong, nonatomic)NSString *htmlUrl;
+@property (strong, nonatomic)NSMutableArray *dataArray;
 @property (strong, nonatomic)NSMutableArray *imageArray;
 @property (strong, nonatomic)NSMutableArray *imageDetailUrlArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *imageCollectionView;
@@ -29,11 +32,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.pageCount = 1;
-    [self GetFromHtml];
+    [self GetFromSqlite];
     self.imageCollectionView.dataSource = self;
     self.imageCollectionView.delegate = self;
     [self.imageCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"CollectionViewCell"];
-    [self addRefresh];
+    //上拉和下拉刷新
+    //[self addRefresh];
     [self addGestureRecognizer];
     [self setNaviTitle:@"妹子去哪了"];
     [self setRightNaviItemWithTitle:@"下一页" imageName:@"next.ico"];
@@ -46,14 +50,14 @@
     
     // 下拉刷新
     self.imageCollectionView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self GetFromHtml];
+        [self GetFromSqlite];
         [weakSelf.imageCollectionView.mj_header endRefreshing];
     }];
     [self.imageCollectionView.mj_header beginRefreshing];
     
     // 上拉刷新
     self.imageCollectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [self GetFromHtml];
+        [self GetFromSqlite];
         [weakSelf.imageCollectionView.mj_header endRefreshing];
     }];
     // 默认先隐藏footer
@@ -64,25 +68,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)GetFromHtml {
-    htmlUrl = [NSString stringWithFormat:@"http://www.meizitu.com/a/list_1_%d.html",self.pageCount];
-    
-//    NSBlockOperation *operation1 = [NSBlockOperation blockOperationWithBlock:^{
-//        self.imageArray = [GetHtmlAnalyze searchImageWithHtml:htmlUrl];
-//        self.imageDetailUrlArray = [GetHtmlAnalyze searchImageDetailUrlWithHtml:htmlUrl];
-//        self.titleArray = [GetHtmlAnalyze searchTitleWithHtml:htmlUrl];
-//    }];
-//    
-//    NSBlockOperation *operation2 = [NSBlockOperation blockOperationWithBlock:^{
-//        [self.imageCollectionView reloadData];
-//    }];
-//    [operation2 addDependency:operation1];
-//    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-//    [queue addOperations:@[operation2, operation1] waitUntilFinished:NO];
-    self.imageArray = [GetHtmlAnalyze searchImageWithHtml:htmlUrl];
-    self.imageDetailUrlArray = [GetHtmlAnalyze searchImageDetailUrlWithHtml:htmlUrl];
-    [self.imageCollectionView reloadData];
-
+- (void)GetFromSqlite {
+    [[PeriDBModel GetInstance]initDB];
+    self.dataArray = [[PeriDBModel GetInstance]queryWithPage:self.pageCount];
+    if (![self.dataArray count] == 0) {
+        self.imageArray = [[NSMutableArray alloc]initWithCapacity:0];
+        self.imageDetailUrlArray = [[NSMutableArray alloc]initWithCapacity:0];
+        for (imageModel *model in self.dataArray) {
+            [self.imageArray addObject:model.imageUrl];
+            [self.imageDetailUrlArray addObject:model.imageDetail];
+        }
+        [self.imageCollectionView reloadData];
+    }
+    else {
+        [GetHtmlAnalyze GetFromHtml:self.pageCount];
+        [self GetFromSqlite];
+    }
 }
 
 - (void)addGestureRecognizer {
@@ -98,7 +99,7 @@
 - (void)leftItemTapped {
     if (self.pageCount > 1) {
         self.pageCount--;
-        [self GetFromHtml];
+        [self GetFromSqlite];
         [self moveLeftViewAnimation];
     }
     else {
@@ -110,7 +111,7 @@
 - (void)rightItemTapped {
     [self moveRightViewAnimation];
     self.pageCount++;
-    [self GetFromHtml];
+    [self GetFromSqlite];
 }
 
 - (void)moveLeftViewAnimation {

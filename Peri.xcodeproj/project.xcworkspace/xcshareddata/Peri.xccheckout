@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>3FC7245F-0D5F-4C78-98C7-89472B46A2CB</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Peri</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>A9FDD1C39552F529A5B4C58058B73D394B1A3CA7</key>
 		<string>https://github.com/miao445201/Peri.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Peri.xcodeproj</string>
+	<string>Peri.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A9FDD1C39552F529A5B4C58058B73D394B1A3CA7</key>

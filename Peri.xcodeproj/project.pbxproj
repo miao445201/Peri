@@ -52,6 +52,8 @@
 		91AD17A81C044195004B04C3 /* tuNoSelect.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AD17A61C044195004B04C3 /* tuNoSelect.png */; };
 		91AD17A91C044195004B04C3 /* tuSelect.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AD17A71C044195004B04C3 /* tuSelect.png */; };
 		91AD17AB1C0443A2004B04C3 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AD17AA1C0443A2004B04C3 /* user.png */; };
+		91B220441C05A67900E79041 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 91B220431C05A67900E79041 /* libsqlite3.tbd */; };
+		91B6462C1C06DB9400025E7D /* imageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B6462B1C06DB9400025E7D /* imageModel.m */; };
 		91C510151BF9C757007E3113 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C50FEB1BF9C757007E3113 /* MJRefreshAutoFooter.m */; };
 		91C510161BF9C757007E3113 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C50FED1BF9C757007E3113 /* MJRefreshBackFooter.m */; };
 		91C510171BF9C757007E3113 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C50FEF1BF9C757007E3113 /* MJRefreshComponent.m */; };
@@ -71,6 +73,12 @@
 		91C510251BF9C757007E3113 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C510101BF9C757007E3113 /* UIScrollView+MJExtension.m */; };
 		91C510261BF9C757007E3113 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C510121BF9C757007E3113 /* UIScrollView+MJRefresh.m */; };
 		91C510271BF9C757007E3113 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C510141BF9C757007E3113 /* UIView+MJExtension.m */; };
+		91D541861C059994000EA621 /* PeriDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D541851C059994000EA621 /* PeriDBModel.m */; };
+		91D541931C059CC8000EA621 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D541891C059CC8000EA621 /* FMDatabase.m */; };
+		91D541941C059CC8000EA621 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D5418B1C059CC8000EA621 /* FMDatabaseAdditions.m */; };
+		91D541951C059CC8000EA621 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D5418D1C059CC8000EA621 /* FMDatabasePool.m */; };
+		91D541961C059CC8000EA621 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D5418F1C059CC8000EA621 /* FMDatabaseQueue.m */; };
+		91D541971C059CC8000EA621 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D541921C059CC8000EA621 /* FMResultSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +158,9 @@
 		91AD17A61C044195004B04C3 /* tuNoSelect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tuNoSelect.png; sourceTree = "<group>"; };
 		91AD17A71C044195004B04C3 /* tuSelect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tuSelect.png; sourceTree = "<group>"; };
 		91AD17AA1C0443A2004B04C3 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		91B220431C05A67900E79041 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		91B6462A1C06DB9400025E7D /* imageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imageModel.h; sourceTree = "<group>"; };
+		91B6462B1C06DB9400025E7D /* imageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imageModel.m; sourceTree = "<group>"; };
 		91C50FEA1BF9C757007E3113 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		91C50FEB1BF9C757007E3113 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		91C50FEC1BF9C757007E3113 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -188,6 +199,19 @@
 		91C510121BF9C757007E3113 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		91C510131BF9C757007E3113 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		91C510141BF9C757007E3113 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		91D541841C059994000EA621 /* PeriDBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeriDBModel.h; path = Peri/Model/PeriDBModel.h; sourceTree = "<group>"; };
+		91D541851C059994000EA621 /* PeriDBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeriDBModel.m; path = Peri/Model/PeriDBModel.m; sourceTree = "<group>"; };
+		91D541881C059CC8000EA621 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		91D541891C059CC8000EA621 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		91D5418A1C059CC8000EA621 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		91D5418B1C059CC8000EA621 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		91D5418C1C059CC8000EA621 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		91D5418D1C059CC8000EA621 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		91D5418E1C059CC8000EA621 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		91D5418F1C059CC8000EA621 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		91D541901C059CC8000EA621 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		91D541911C059CC8000EA621 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		91D541921C059CC8000EA621 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91B220441C05A67900E79041 /* libsqlite3.tbd in Frameworks */,
 				914DA5F41BF479A10030BA86 /* ImageIO.framework in Frameworks */,
 				914DA5F21BF479930030BA86 /* MapKit.framework in Frameworks */,
 			);
@@ -206,6 +231,7 @@
 		91374FF51BF0709D00EE9784 = {
 			isa = PBXGroup;
 			children = (
+				91B220431C05A67900E79041 /* libsqlite3.tbd */,
 				914DA5F31BF479A10030BA86 /* ImageIO.framework */,
 				914DA5F11BF479930030BA86 /* MapKit.framework */,
 				913750001BF0709D00EE9784 /* Peri */,
@@ -251,6 +277,7 @@
 		914BC60A1BF334790048E171 /* 3rdclass */ = {
 			isa = PBXGroup;
 			children = (
+				91D541871C059CC8000EA621 /* fmdb */,
 				91C50FE81BF9C757007E3113 /* MJRefresh */,
 				91821F461BF5BFBC00E7ACA5 /* ProgressHUD */,
 				914DA5BF1BF479450030BA86 /* SDWebImage */,
@@ -320,6 +347,10 @@
 			children = (
 				91AD178F1C043D25004B04C3 /* GetHtmlAnalyze.h */,
 				91AD17901C043D25004B04C3 /* GetHtmlAnalyze.m */,
+				91D541841C059994000EA621 /* PeriDBModel.h */,
+				91D541851C059994000EA621 /* PeriDBModel.m */,
+				91B6462A1C06DB9400025E7D /* imageModel.h */,
+				91B6462B1C06DB9400025E7D /* imageModel.m */,
 			);
 			name = Model;
 			path = ..;
@@ -470,6 +501,24 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		91D541871C059CC8000EA621 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				91D541881C059CC8000EA621 /* FMDatabase.h */,
+				91D541891C059CC8000EA621 /* FMDatabase.m */,
+				91D5418A1C059CC8000EA621 /* FMDatabaseAdditions.h */,
+				91D5418B1C059CC8000EA621 /* FMDatabaseAdditions.m */,
+				91D5418C1C059CC8000EA621 /* FMDatabasePool.h */,
+				91D5418D1C059CC8000EA621 /* FMDatabasePool.m */,
+				91D5418E1C059CC8000EA621 /* FMDatabaseQueue.h */,
+				91D5418F1C059CC8000EA621 /* FMDatabaseQueue.m */,
+				91D541901C059CC8000EA621 /* FMDB.h */,
+				91D541911C059CC8000EA621 /* FMResultSet.h */,
+				91D541921C059CC8000EA621 /* FMResultSet.m */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -561,14 +610,17 @@
 				91AD17911C043D25004B04C3 /* GetHtmlAnalyze.m in Sources */,
 				91C510171BF9C757007E3113 /* MJRefreshComponent.m in Sources */,
 				91C510181BF9C757007E3113 /* MJRefreshFooter.m in Sources */,
+				91B6462C1C06DB9400025E7D /* imageModel.m in Sources */,
 				914DA5EF1BF479450030BA86 /* UIImageView+WebCache.m in Sources */,
 				913750061BF0709D00EE9784 /* AppDelegate.m in Sources */,
 				914DA5E71BF479450030BA86 /* SDWebImageDownloaderOperation.m in Sources */,
 				914DA5E81BF479450030BA86 /* SDWebImageManager.m in Sources */,
+				91D541951C059CC8000EA621 /* FMDatabasePool.m in Sources */,
 				9158C0AA1BF0812B004B58E1 /* CustomLightNavigationController.m in Sources */,
 				9158C0AB1BF0812B004B58E1 /* CustomNavigationController.m in Sources */,
 				91C510261BF9C757007E3113 /* UIScrollView+MJRefresh.m in Sources */,
 				91C510251BF9C757007E3113 /* UIScrollView+MJExtension.m in Sources */,
+				91D541861C059994000EA621 /* PeriDBModel.m in Sources */,
 				91C510201BF9C757007E3113 /* MJRefreshGifHeader.m in Sources */,
 				914DA5E61BF479450030BA86 /* SDWebImageDownloader.m in Sources */,
 				91C510221BF9C757007E3113 /* MJRefreshStateHeader.m in Sources */,
@@ -576,15 +628,19 @@
 				914DA5E11BF479450030BA86 /* MKAnnotationView+WebCache.m in Sources */,
 				91C5101E1BF9C757007E3113 /* MJRefreshBackNormalFooter.m in Sources */,
 				914DA5E41BF479450030BA86 /* SDWebImageCompat.m in Sources */,
+				91D541941C059CC8000EA621 /* FMDatabaseAdditions.m in Sources */,
 				914DA5E91BF479450030BA86 /* SDWebImagePrefetcher.m in Sources */,
 				914DA5F01BF479450030BA86 /* UIView+WebCacheOperation.m in Sources */,
 				91821F4B1BF5BFBC00E7ACA5 /* ProgressHUD.m in Sources */,
 				914DA5EC1BF479450030BA86 /* UIImage+MultiFormat.m in Sources */,
+				91D541931C059CC8000EA621 /* FMDatabase.m in Sources */,
+				91D541971C059CC8000EA621 /* FMResultSet.m in Sources */,
 				9158C0A91BF0812B004B58E1 /* BaseViewController.m in Sources */,
 				914DA5EA1BF479450030BA86 /* UIButton+WebCache.m in Sources */,
 				91C510211BF9C757007E3113 /* MJRefreshNormalHeader.m in Sources */,
 				91C5101B1BF9C757007E3113 /* MJRefreshAutoNormalFooter.m in Sources */,
 				91C510271BF9C757007E3113 /* UIView+MJExtension.m in Sources */,
+				91D541961C059CC8000EA621 /* FMDatabaseQueue.m in Sources */,
 				914DA5E31BF479450030BA86 /* SDImageCache.m in Sources */,
 				91C510151BF9C757007E3113 /* MJRefreshAutoFooter.m in Sources */,
 				9158C0A81BF0812B004B58E1 /* BaseMenuViewController.m in Sources */,
